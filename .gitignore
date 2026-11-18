@@ -1,0 +1,24 @@
+# Docker-related unwanted files
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Docker build cache
+**/docker-compose.override.yml
+**/docker/*.log
+
+# Docker secrets
+secrets/
+
+# Generated files
+*.log
+
+# Keystore files (private keys) – do NOT version
+keystore/
+
+# Sensitive plaintext password file
+password.txt
+
+# Documentation files that should not be versioned (e.g., local README for dev setup)
+**/README.md

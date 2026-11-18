@@ -1,0 +1,148 @@
+networks:
+  chainforger-bridge:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+
+services:
+  # ==========================================
+  # Validator 1 (Consortium Leader / Bootnode)
+  # ==========================================
+  validator1:
+    image: ethereum/client-go:v1.13.14
+    container_name: chainforger-validator-1
+    restart: unless-stopped
+    ports:
+      - "8546:8545"    # HTTP JSON-RPC
+      - "8548:8546"    # WebSocket RPC
+      - "30303:30303"  # P2P discovery
+    networks:
+      chainforger-bridge:
+        ipv4_address: 172.28.0.10
+    volumes:
+      - ./genesis.json:/root/genesis.json:ro
+      - ./password.txt:/root/password.txt:ro
+      - ./keystore/v1.json:/root/keystore/v1.json:ro
+      - validator1-data:/root/.ethereum
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        if [ ! -d /root/.ethereum/geth/chaindata ]; then
+          echo "[Validator 1] Initializing Clique Genesis..."
+          geth init /root/genesis.json
+          mkdir -p /root/.ethereum/keystore
+          cp /root/keystore/v1.json /root/.ethereum/keystore/
+        fi
+        echo "[Validator 1] Starting PoA Validator..."
+        exec geth \
+          --networkid 1337 \
+          --syncmode full \
+          --mine \
+          --miner.etherbase 0xa5e70e48acb99a0d31dad3d8f10df85e8cf5102c \
+          --miner.gasprice 0 \
+          --unlock 0xa5e70e48acb99a0d31dad3d8f10df85e8cf5102c \
+          --password /root/password.txt \
+          --allow-insecure-unlock \
+          --http \
+          --http.addr 0.0.0.0 \
+          --http.port 8545 \
+          --http.api eth,net,web3,personal,clique,miner,txpool,admin \
+          --http.corsdomain "*" \
+          --http.vhosts "*" \
+          --ws \
+          --ws.addr 0.0.0.0 \
+          --ws.port 8546 \
+          --ws.api eth,net,web3,personal,clique,miner \
+          --ws.origins "*"
+
+  # ==========================================
+  # Validator 2 (Secondary Consortium Signer)
+  # ==========================================
+  validator2:
+    image: ethereum/client-go:v1.13.14
+    container_name: chainforger-validator-2
+    restart: unless-stopped
+    depends_on:
+      - validator1
+    ports:
+      - "8547:8545"    # HTTP JSON-RPC
+      - "30304:30303"  # P2P
+    networks:
+      chainforger-bridge:
+        ipv4_address: 172.28.0.11
+    volumes:
+      - ./genesis.json:/root/genesis.json:ro
+      - ./password.txt:/root/password.txt:ro
+      - ./keystore/v2.json:/root/keystore/v2.json:ro
+      - validator2-data:/root/.ethereum
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        if [ ! -d /root/.ethereum/geth/chaindata ]; then
+          echo "[Validator 2] Initializing Clique Genesis..."
+          geth init /root/genesis.json
+          mkdir -p /root/.ethereum/keystore
+          cp /root/keystore/v2.json /root/.ethereum/keystore/
+        fi
+        echo "[Validator 2] Starting PoA Validator..."
+        exec geth \
+          --networkid 1337 \
+          --syncmode full \
+          --mine \
+          --miner.etherbase 0x03b1d42b8cb50325b61767e402dd747a9c28c953 \
+          --unlock 0x03b1d42b8cb50325b61767e402dd747a9c28c953 \
+          --password /root/password.txt \
+          --allow-insecure-unlock \
+          --http \
+          --http.addr 0.0.0.0 \
+          --http.port 8545 \
+          --http.api eth,net,web3,personal,clique,miner,txpool \
+          --http.corsdomain "*" \
+          --http.vhosts "*" \
+          --netrestrict 172.28.0.0/16
+
+  # ==========================================
+  # Consortium Member / Application RPC Node
+  # ==========================================
+  member-rpc:
+    image: ethereum/client-go:v1.13.14
+    container_name: chainforger-member-rpc
+    restart: unless-stopped
+    depends_on:
+      - validator1
+    ports:
+      - "8549:8545"    # App RPC endpoint
+    networks:
+      chainforger-bridge:
+        ipv4_address: 172.28.0.12
+    volumes:
+      - ./genesis.json:/root/genesis.json:ro
+      - member-data:/root/.ethereum
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        if [ ! -d /root/.ethereum/geth/chaindata ]; then
+          echo "[Member RPC] Initializing Clique Genesis..."
+          geth init /root/genesis.json
+        fi
+        echo "[Member RPC] Starting Non-Mining Read/Write Gateway..."
+        exec geth \
+          --networkid 1337 \
+          --syncmode full \
+          --http \
+          --http.addr 0.0.0.0 \
+          --http.port 8545 \
+          --http.api eth,net,web3 \
+          --http.corsdomain "*" \
+          --http.vhosts "*" \
+          --netrestrict 172.28.0.0/16
+          
+volumes:
+  validator1-data:
+  validator2-data:
+  member-data:
