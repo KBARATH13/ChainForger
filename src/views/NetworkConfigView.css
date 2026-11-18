@@ -1,0 +1,416 @@
+.config-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.config-header {
+  margin-bottom: 1.5rem;
+}
+
+.config-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #5aff5a;
+  text-shadow: 0 0 12px rgba(57, 255, 20, 0.35);
+}
+
+.config-desc {
+  font-size: 0.85rem;
+  color: #2a8a2a;
+  margin-top: 0.35rem;
+  line-height: 1.5;
+}
+
+/* Archetype Tabs */
+.archetype-tabs-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .archetype-tabs-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.archetype-tab-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  color: #2a8a2a;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: inherit;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.archetype-tab-btn:hover {
+  border-color: #39ff14;
+  color: #5aff5a;
+}
+
+.archetype-tab-active {
+  background: rgba(57, 255, 20, 0.08);
+  border-color: #39ff14;
+  color: #5aff5a;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.25), inset 0 0 10px rgba(57, 255, 20, 0.05);
+}
+
+.network-option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.network-option-content strong {
+  color: #5aff5a;
+  font-size: 0.9rem;
+}
+
+.network-option-content > span {
+  color: #94b794;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.network-option-content small {
+  color: #6b9b6b;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.config-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.network-name-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 620px;
+  margin-bottom: 1.25rem;
+}
+
+.network-name-field .config-input-label {
+  font-size: 0.95rem;
+}
+
+.network-name-field .config-input-field {
+  padding: 0.8rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+.network-name-hint {
+  color: #7aa77a;
+  font-size: 0.72rem;
+}
+
+.advanced-config {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.advanced-config > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  padding: 1rem 0;
+  color: #a6d9a6;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.advanced-config > summary:hover {
+  color: #5aff5a;
+}
+
+.advanced-config > summary small {
+  color: #6b9b6b;
+  font-size: 0.72rem;
+  font-weight: 400;
+}
+
+.advanced-config-content {
+  padding-top: 0.5rem;
+}
+
+.config-section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #5aff5a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.4rem;
+}
+
+.config-sub-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #5aff5a;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.template-customizer-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px dashed rgba(57, 255, 20, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.template-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(57, 255, 20, 0.15);
+  color: #39ff14;
+  border: 1px solid #39ff14;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.form-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .form-two-col,
+  .form-three-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.config-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.config-input-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #5aff5a;
+}
+
+.config-input-field {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: #5aff5a;
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.config-input-field:focus {
+  border-color: #39ff14;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+}
+
+.token-toggle-row {
+  margin: 0.75rem 0 0.5rem 0;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  accent-color: #39ff14;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-label {
+  font-size: 0.8rem;
+  color: #5aff5a;
+  font-weight: 600;
+}
+
+.sub-panel {
+  background: rgba(0, 20, 0, 0.4);
+  border-left: 2px solid #39ff14;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* CRT Terminal Telemetry Box */
+.live-preview-box {
+  background: #020602;
+  border: 1px solid #1a4d1a;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+.live-preview-header {
+  background: #041004;
+  border-bottom: 1px solid #1a4d1a;
+  padding: 0.4rem 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #5aff5a;
+}
+
+.live-preview-status {
+  font-size: 0.7rem;
+  color: #39ff14;
+}
+
+.live-preview-code {
+  padding: 0.85rem;
+  color: #39ff14;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  max-height: 250px;
+  overflow-y: auto;
+  margin: 0;
+  text-shadow: 0 0 5px rgba(57, 255, 20, 0.3);
+}
+
+.config-submit-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: transparent;
+  border: 1px solid #39ff14;
+  border-radius: var(--radius-md);
+  color: #39ff14;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+  transition: all 0.2s;
+}
+
+.config-submit-btn:hover:not(:disabled) {
+  background: rgba(57, 255, 20, 0.12);
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+  transform: translateY(-1px);
+}
+
+.config-submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.config-banner-warning {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid #f59e0b;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #fbbf24;
+  font-size: 0.875rem;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+}
+
+.config-banner-quota-danger {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid #ef4444;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #fca5a5;
+  font-size: 0.875rem;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+.config-banner-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid var(--accent-rose);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #f87171;
+  font-size: 0.875rem;
+}
+
+.config-banner-success {
+  background: rgba(57, 255, 20, 0.1);
+  border: 1px solid #39ff14;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #5aff5a;
+  font-size: 0.875rem;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+}
+
+@media (max-width: 768px) {
+  .config-form {
+    padding: 1.1rem;
+  }
+
+  .network-option-content > span {
+    max-width: none;
+  }
+}

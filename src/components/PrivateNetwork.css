@@ -1,0 +1,11 @@
+/* Private Network Customizer Styles */
+.private-customizer-box {
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.05);
+}
+
+.private-badge {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+}

@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #070d07;
+  --bg-secondary: #0a110a;
+  --bg-card: #0d150d;
+  --bg-card-hover: #121e12;
+  --bg-input: #040904;
+  
+  --border-subtle: #1a3d1a;
+  --border-focus: #39ff14;
+  
+  --text-primary: #5aff5a;
+  --text-secondary: #39ff14;
+  --text-muted: #237723;
+  
+  --accent-cyan: #39ff14;
+  --accent-blue: #22c55e;
+  --accent-emerald: #10b981;
+  --accent-amber: #eab308;
+  --accent-rose: #ef4444;
+  --accent-violet: #4ade80;
+
+  --shadow-glow: 0 0 25px -5px rgba(57, 255, 20, 0.2);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Courier New', Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Subtle CRT Scanline overlay across the whole app */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a8a2a;
+}

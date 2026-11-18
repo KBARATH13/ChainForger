@@ -1,0 +1,11 @@
+/* Consortium Network Customizer Styles */
+.consortium-customizer-box {
+  border-color: rgba(251, 191, 36, 0.3);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.05);
+}
+
+.consortium-badge {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+}

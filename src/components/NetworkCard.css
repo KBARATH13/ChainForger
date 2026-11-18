@@ -1,0 +1,280 @@
+.network-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.network-card:hover {
+  border-color: #39ff14;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.card-header-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #5aff5a;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.25);
+  word-break: break-word;
+}
+
+.card-type-tag {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  background: rgba(57, 255, 20, 0.1);
+  color: #39ff14;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.card-type-public {
+  background: rgba(57, 255, 20, 0.12);
+  color: #39ff14;
+  border-color: rgba(57, 255, 20, 0.4);
+}
+
+.card-type-private {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.card-type-consortium {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.card-created {
+  font-size: 0.75rem;
+  color: #2a8a2a;
+}
+
+.badge-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-running {
+  background: rgba(57, 255, 20, 0.12);
+  color: #39ff14;
+  border: 1px solid #39ff14;
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
+}
+
+.badge-starting {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.badge-stopped {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: crt-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes crt-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+.card-info-box {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.card-info-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2a8a2a;
+  margin-bottom: 0.35rem;
+}
+
+.card-rpc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.card-rpc-code {
+  font-size: 0.825rem;
+  color: #5aff5a;
+  word-break: break-all;
+}
+
+.card-copy-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem;
+  color: #2a8a2a;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.card-copy-btn:hover {
+  border-color: #39ff14;
+  color: #39ff14;
+}
+
+.card-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-meta-sub {
+  font-size: 0.7rem;
+  color: #2a8a2a;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.card-meta-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #5aff5a;
+}
+
+.card-actions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-actions-manage {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.card-action-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.4rem;
+  font-size: 0.775rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  color: #39ff14;
+  font-family: inherit;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.card-action-btn span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-action-btn:hover {
+  border-color: #39ff14;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+}
+
+.card-stop-btn {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.card-stop-btn:hover:not(:disabled) {
+  border-color: #fbbf24;
+  color: #fef08a;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+}
+
+.card-stop-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.card-delete-btn {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.card-delete-btn:hover:not(:disabled) {
+  border-color: #ef4444;
+  color: #f87171;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+}
+
+.card-delete-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
