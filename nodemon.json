@@ -1,0 +1,14 @@
+{
+  "watch": [
+    "index.js",
+    "src"
+  ],
+  "ext": "js,json",
+  "ignore": [
+    "node_modules",
+    "states",
+    ".git"
+  ],
+  "legacyWatch": true,
+  "delay": 200
+}
